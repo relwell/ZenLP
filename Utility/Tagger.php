@@ -1,15 +1,22 @@
 <?php
-
 /**
  * Static utilities for tagging
  * @author Robert Elwell
  *
  */
 
+require_once 'Utility/Tagger/Abstract.php';
+require_once 'Utility/Tagger/Naive.php';
+
 class ZenLP_Utility_Tagger
 {
-    static function tagStatic($source, $className)
+    static function tagStatic($source, $terminalClassName)
     {
+        if (!$terminalClassName) {
+            throw new Exception("Class name must be provided as second argument in ".get_class(self));
+        }
+        $className = 'ZenLP_Utility_Tagger_'.$terminalClassName;
+        
         if (!class_exists($className, 1)) {
             throw new Exception("No class by name of {$className} to call in ".get_class(self));
         }

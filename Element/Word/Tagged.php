@@ -25,7 +25,8 @@ class ZenLP_Element_Word_Tagged extends ZenLP_Element_Word
             throw new Exception('ZenLP_ELement_Word_Tagged requires values for both parameters');
         }
         
-        $this->_content = $content;
+        parent::__construct($content);
+        
         $this->_tag = $tag;
         
         if ($reversedOrder) {
