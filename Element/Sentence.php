@@ -7,10 +7,13 @@
  *
  */
 
+require_once('Sentence/Tagged.php');
+
 class ZenLP_Element_Sentence implements IteratorAggregate
 {
     protected $_content;
     protected $_words = array();
+    protected $_separator = ' ';
     
     function __construct($textOrArray)
     {
@@ -38,7 +41,7 @@ class ZenLP_Element_Sentence implements IteratorAggregate
             throw new Exception('All elements in an array passed to ZenLP_Element_Sentence must inherit from ZenLP_Element_Word');
         }
         $this->_words = $arr;
-        $this->_content = implode(' ', $this->_words);
+        $this->_content = implode($this->_separator, $this->_words);
         
     }
     
@@ -59,5 +62,14 @@ class ZenLP_Element_Sentence implements IteratorAggregate
         $arrayObject = new ArrayObject($this->_words);
 
         return $arrayObject->getIterator();
+    }
+    
+    function setSeparator($separator)
+    {
+        if (!is_string($separator)) {
+            throw new Exception('Separators must be strings');
+        }
+        
+        $this->_separator = $separator;
     }
 }

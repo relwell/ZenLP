@@ -6,6 +6,8 @@
    * @author Robert Elwell
    **/
 
+require_once('Word/Tagged.php');
+
 class ZenLP_Element_Word
 {
     // the content of the word
