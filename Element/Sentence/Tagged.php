@@ -33,11 +33,6 @@ class ZenLP_Element_Sentence_Tagged extends ZenLP_Element_Sentence
     
     function __toString()
     {
-        $str = '';
-        foreach ($this->_words as $word) 
-        {
-            $str .= (string)$word;
-        }
-        return $str;
+        return implode($this->_separator, $this->_words);
     }
 }

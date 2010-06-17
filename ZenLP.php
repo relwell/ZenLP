@@ -6,6 +6,8 @@
  * Namespace class to ease autoloading
  * @author Robert Elwell
  *
+ * requires PHP 5.2.0 or greater
+ *
  */
 
 require_once 'Utility.php';

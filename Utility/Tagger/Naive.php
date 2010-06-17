@@ -51,7 +51,7 @@ class ZenLP_Utility_Tagger_Naive extends ZenLP_Utility_Tagger_Abstract
             {
                 $sent[] = new ZenLP_Element_Word_Tagged($word->getContent(), $this->_naiveTag);
             }
-            $this->_taggedSentences[] = $sent;
+            $this->_taggedSentences[] = new ZenLP_Element_Sentence_Tagged($sent);
         }
         
         return $this->_taggedSentences;

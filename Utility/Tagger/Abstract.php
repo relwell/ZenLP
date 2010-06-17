@@ -12,7 +12,7 @@ abstract class ZenLP_Utility_Tagger_Abstract
     function tag()
     {
         if ($this->_sentences) {
-            return $this->tagSentences;
+            return $this->tagSentences();
         }
         
         return $this->tagWords();
