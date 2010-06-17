@@ -8,8 +8,9 @@
  *
  */
 
-
+require_once 'Utility.php';
 require_once 'Element.php';
+
 
 class ZenLP
 {

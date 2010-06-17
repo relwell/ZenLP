@@ -7,8 +7,6 @@
  *
  */
 
-require_once('Sentence/Tagged.php');
-
 class ZenLP_Element_Sentence implements IteratorAggregate
 {
     protected $_content;
@@ -38,7 +36,8 @@ class ZenLP_Element_Sentence implements IteratorAggregate
     {
         $checker = array_walk($arr, 'is_a', 'ZenLP_Element_Word');
         if (in_array(false, $checker)) {
-            throw new Exception('All elements in an array passed to ZenLP_Element_Sentence must inherit from ZenLP_Element_Word');
+            throw new Exception('All elements in an array passed to ZenLP_Element_Sentence must '
+                               .' inherit from ZenLP_Element_Word');
         }
         $this->_words = $arr;
         $this->_content = implode($this->_separator, $this->_words);
@@ -71,5 +70,25 @@ class ZenLP_Element_Sentence implements IteratorAggregate
         }
         
         $this->_separator = $separator;
+    }
+    
+    function pushWord(ZenLP_Element_Word $word)
+    {
+        array_push($this->_words, $word);
+    }
+    
+    function popWord()
+    {
+        return array_pop($this->_words);
+    }
+    
+    function shiftWord()
+    {
+        return array_shift($this->_words);
+    }
+    
+    function unshiftWord(ZenLP_Element_Word $word)
+    {
+        array_unshift($this->_words, $word);
     }
 }

@@ -13,8 +13,19 @@ class ZenLP_Element_Sentence_Tagged extends ZenLP_Element_Sentence
         foreach ($word as $word) 
         {
             if (! $word instanceOf ZenLP_Element_Word_Tagged) {
-                throw new Exception('All words passed to ZenLP_Element_Sentence_Tagged must be an instance of ZenLP_Element_Word_tagged');
+                throw new Exception('All words passed to ZenLP_Element_Sentence_Tagged must be an '
+                                   .'instance of ZenLP_Element_Word_tagged');
             }
         }
+    }
+    
+    function pushWord(ZenLP_Element_Word_Tagged $word)
+    {
+        parent::pushWord($word);
+    }
+    
+    function unshiftWord(ZenLP_Element_Word_Tagged $word)
+    {
+        parent::unshiftWord($word);
     }
 }

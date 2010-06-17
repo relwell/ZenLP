@@ -6,8 +6,6 @@
    * @author Robert Elwell
    **/
 
-require_once('Word/Tagged.php');
-
 class ZenLP_Element_Word
 {
     // the content of the word
@@ -39,6 +37,11 @@ class ZenLP_Element_Word
      */
     
     function __toString()
+    {
+        return $this->_content;
+    }
+    
+    function getContent()
     {
         return $this->_content;
     }

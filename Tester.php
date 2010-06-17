@@ -8,5 +8,6 @@ require_once 'ZenLP.php';
 $loader = Zend_Loader_Autoloader::getInstance();
 $loader->setFallbackAutoloader(true);
 
-$tagged = new ZeNLP_Element_Word_Tagged('Dog', 'N');
-echo $tagged,"\n";
+$sentence = "Once upon a time there was a very angry chicken.";
+
+Zend_Debug::dump(ZenLP_Utility_Tagger::tag($sentence));
