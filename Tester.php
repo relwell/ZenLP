@@ -8,8 +8,5 @@ require_once 'ZenLP.php';
 $loader = Zend_Loader_Autoloader::getInstance();
 $loader->setFallbackAutoloader(true);
 
-$word = new ZenLP_Element_Word('dog');
-
-$sentence = new ZenLP_Element_Sentence('The quick, brown fox jumped over the lazy dog.');
-
-echo $sentence,"\n";
+$tagged = new ZeNLP_Element_Word_Tagged('Dog', 'N');
+echo $tagged,"\n";

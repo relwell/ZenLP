@@ -7,7 +7,7 @@
  *
  */
 
-class ZenLP_Element_Sentence
+class ZenLP_Element_Sentence implements IteratorAggregate
 {
     protected $_content;
     protected $_words = array();
@@ -52,5 +52,12 @@ class ZenLP_Element_Sentence
                 $this->_words[] = new ZenLP_Element_Word($word);
             }
         }
+    }
+    
+    function getIterator()
+    {
+        $arrayObject = new ArrayObject($this->_words);
+
+        return $arrayObject->getIterator();
     }
 }
