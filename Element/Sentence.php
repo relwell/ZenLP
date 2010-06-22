@@ -9,12 +9,15 @@
 
 class ZenLP_Element_Sentence implements IteratorAggregate
 {
-    protected $_content;
+    protected $_content = array();
     protected $_words = array();
-    protected $_separator = ' ';
+    protected $_tags = array();
+    protected $_separator;
     
-    function __construct($textOrArray)
+    function __construct($textOrArray, $separator = ' ')
     {
+        $this->setSeparator($separator);
+        
         if (is_array($textOrArray)) {
             $this->__constructArray($textOrArray);
         } else if (is_string($textOrArray)) {
@@ -24,7 +27,7 @@ class ZenLP_Element_Sentence implements IteratorAggregate
     
     function __toString()
     {
-        return $this->getContent();
+        return implode($this->_separator, $this->_content);
     }
     
     function getContent()
@@ -34,14 +37,15 @@ class ZenLP_Element_Sentence implements IteratorAggregate
     
     protected function __constructArray($arr) 
     {
-        $checker = array_walk($arr, 'is_a', 'ZenLP_Element_Word');
-        if (in_array(false, $checker)) {
-            throw new Exception('All elements in an array passed to ZenLP_Element_Sentence must '
-                               .' inherit from ZenLP_Element_Word');
+        foreach ($arr as $word) {
+            if (! $word instanceOf ZenLP_Element_Word) {
+                throw new Exception('All elements in an array passed to ZenLP_Element_Sentence must '
+                                   .' inherit from ZenLP_Element_Word');
+            }
         }
-        $this->_words = $arr;
-        $this->_content = implode($this->_separator, $this->_words);
         
+        $this->_words = $arr; 
+        $this->_content = array_merge($this->_content, $arr);
     }
     
     protected function __constructString($text)
@@ -54,6 +58,11 @@ class ZenLP_Element_Sentence implements IteratorAggregate
                 $this->_words[] = new ZenLP_Element_Word($word);
             }
         }
+    }
+    
+    function getWords()
+    {
+        return $this->_words;
     }
     
     function getIterator()

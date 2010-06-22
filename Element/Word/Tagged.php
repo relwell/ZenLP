@@ -56,5 +56,15 @@ class ZenLP_Element_Word_Tagged extends ZenLP_Element_Word
     {
         $this->_representationOrder = array('_content', '_tag');
     }
+    
+    public function getTag()
+    {
+        return $this->_tag;
+    }
+    
+    public function getWord()
+    {
+        return $this->_content;
+    }
    
 }

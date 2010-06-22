@@ -8,6 +8,9 @@
 
 class ZenLP_Element_Sentence_Tagged extends ZenLP_Element_Sentence
 {
+    public $_tags = array();
+    public $_taggedWords = array();
+    
     function __construct(Array $words)
     {
         foreach ($words as $word) 
@@ -17,7 +20,9 @@ class ZenLP_Element_Sentence_Tagged extends ZenLP_Element_Sentence
                                    .'instance of ZenLP_Element_Word_tagged');
             }
             
-            $this->_words[] = $word;
+            $this->_words[] = $word->getWord();
+            $this->_tags[] = $word->getTag();
+            $this->_taggedWords[] = $word;
         }
     }
     

@@ -8,8 +8,9 @@ require_once 'ZenLP.php';
 $loader = Zend_Loader_Autoloader::getInstance();
 $loader->setFallbackAutoloader(true);
 
-$sentence = new ZenLP_Element_Sentence("Once upon a time there was a very angry chicken.");
+$sentenceA = new ZenLP_Element_Sentence("Once upon a time there was a very angry chicken.");
+$sentenceB = new ZenLP_Element_Sentence("That chicken was a huge jerk.");
 
-$output = ZenLP_Utility_Tagger::tagStatic($sentence, 'Naive');
+$doc = new ZenLP_Element_Document(array($sentenceA, $sentenceB), "\n");
 
-echo implode(' ', $output)."\n";
+echo $doc."\n";

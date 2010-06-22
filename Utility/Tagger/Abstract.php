@@ -51,7 +51,7 @@ abstract class ZenLP_Utility_Tagger_Abstract
         
         if ($source instanceOf ZenLP_Element_Word && !$source instanceOf ZenLP_ELement_Word_Tagged) {
             $this->_words[] = $source;
-            $this->appendSourceFromString((string)$source, false);
+            $this->appendSourceFromString($source, false);
             return;
         }
         
