@@ -11,6 +11,7 @@ require_once 'Element/Sentence/Tagged.php';
 require_once 'Element/Word.php';
 require_once 'Element/Word/Tagged.php';
 require_once 'Element/Document.php';
+require_once 'Element/Document/Tagged.php';
 
 class ZenLP_Element
 {

@@ -45,19 +45,21 @@ class ZenLP_Element_Sentence implements IteratorAggregate
         }
         
         $this->_words = $arr; 
-        $this->_content = array_merge($this->_content, $arr);
+        $this->_content = $arr;
     }
     
     protected function __constructString($text)
     {
-        $this->_content = $text;
         // naive word splitting -- should revisit later, or address some other way
         foreach (preg_split('/\W+/', trim($text)) as $word)
         {
             if ($word != '') {
                 $this->_words[] = new ZenLP_Element_Word($word);
             }
+            
         }
+        
+        $this->_content = $this->_words;
     }
     
     function getWords()

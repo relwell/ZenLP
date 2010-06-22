@@ -13,4 +13,8 @@ $sentenceB = new ZenLP_Element_Sentence("That chicken was a huge jerk.");
 
 $doc = new ZenLP_Element_Document(array($sentenceA, $sentenceB), "\n");
 
-echo $doc."\n";
+$tagger = new ZenLP_Utility_Tagger_Naive();
+
+$arr = array(array_shift($tagger->tag($sentenceA)), array_shift($tagger->tag($sentenceB)));
+$docb = new ZenLP_Element_Document_Tagged($arr, "....");
+echo $docb."\n";

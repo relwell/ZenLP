@@ -9,8 +9,12 @@ abstract class ZenLP_Utility_Tagger_Abstract
     protected $_taggedSentences;
     protected $_separator = ' ';
     
-    function tag()
+    function tag($source = null)
     {
+        if ($source) {
+            $this->setSource($source);
+        }
+        
         if ($this->_sentences) {
             return $this->tagSentences();
         }

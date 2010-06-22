@@ -7,26 +7,27 @@ class ZenLP_Element_Document_Tagged extends ZenLP_Element_Document
         foreach ($sentences as $sentence) 
         {
             if (! $sentence instanceOf ZenLP_Element_Sentence_Tagged) {
+                Zend_Debug::dump($sentence);
                 throw new Exception('All sentences passed to ZenLP_Element_Document_Tagged must be an '
                                    .'instance of ZenLP_Element_Sentence_Tagged');
             }
             
-            $this->_sentences[] = $sentences;
+            $this->_sentences[] = $sentence;
         }
     }
     
-    function pushWord(ZenLP_Element_Word_Tagged $word)
+    function pushSentence(ZenLP_Element_Sentence_Tagged $sentence)
     {
-        parent::pushWord($word);
+        parent::pushSentence($sentence);
     }
     
-    function unshiftWord(ZenLP_Element_Word_Tagged $word)
+    function unshiftSentence(ZenLP_Element_Sentence_Tagged $sentence)
     {
-        parent::unshiftWord($word);
+        parent::unshiftSentence($sentence);
     }
     
     function __toString()
     {
-        return implode($this->_separator, $this->_words);
+        return implode($this->_separator, $this->_sentences);
     }
 }
