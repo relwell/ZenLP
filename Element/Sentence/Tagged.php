@@ -11,7 +11,7 @@ class ZenLP_Element_Sentence_Tagged extends ZenLP_Element_Sentence
     public $_tags = array();
     public $_taggedWords = array();
     
-    function __construct(Array $words)
+    function __construct(Array $words, $separator = ' ')
     {
         foreach ($words as $word) 
         {
@@ -24,6 +24,8 @@ class ZenLP_Element_Sentence_Tagged extends ZenLP_Element_Sentence
             $this->_tags[] = $word->getTag();
             $this->_taggedWords[] = $word;
         }
+        
+        $this->_separator = $separator;
     }
     
     function pushWord(ZenLP_Element_Word_Tagged $word)

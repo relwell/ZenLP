@@ -51,7 +51,7 @@ class ZenLP_Element_Sentence implements IteratorAggregate
     protected function __constructString($text)
     {
         // naive word splitting -- should revisit later, or address some other way
-        foreach (preg_split('/\W+/', trim($text)) as $word)
+        foreach (preg_split('/\s+/', trim($text)) as $word)
         {
             if ($word != '') {
                 $this->_words[] = new ZenLP_Element_Word($word);
