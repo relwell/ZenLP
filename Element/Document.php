@@ -36,7 +36,7 @@ class ZenLP_Element_Document
     
     function getIterator()
     {
-        $arrayObject = new ArrayObject($this->_words);
+        $arrayObject = new ArrayObject($this->_sentences);
 
         return $arrayObject->getIterator();
     }

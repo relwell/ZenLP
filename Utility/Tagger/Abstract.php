@@ -5,8 +5,10 @@ abstract class ZenLP_Utility_Tagger_Abstract
     protected $_source;
     protected $_words;
     protected $_sentences;
+    protected $_documents;
     protected $_taggedWords;
     protected $_taggedSentences;
+    protected $_taggedDocuments;
     protected $_separator = ' ';
     
     function tag($source = null)
@@ -41,6 +43,14 @@ abstract class ZenLP_Utility_Tagger_Abstract
         if (is_string($source)) {
             $this->appendSourceFromString($source);
             return;
+        }
+        
+        if ($source instanceOf ZenLP_Element_Document && !$source instanceOf ZenLP_Element_Document_Tagged) {
+            $this->_documents[] = $source;
+            foreach ($source as $sentence)
+            {
+                $this->appendSource($sentence);
+            }
         }
         
         if ($source instanceOf ZenLP_Element_Sentence && !$source instanceOf ZenLP_ELement_Sentence_Tagged) {
